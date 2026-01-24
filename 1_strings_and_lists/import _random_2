@@ -1,0 +1,21 @@
+import random
+
+#get the user choice
+inp_user = int(input("Guess the coin flip !\nEnter\n1 for Heads\n2 for tails\n"))
+
+#check from the choice
+num_win = random.randint(1, 2)
+
+if num_win == 1:
+    coin = "Heads"
+else:
+    coin = "Tails"
+
+if num_win == 1 and inp_user == 1 :
+    result = "win"
+elif num_win == 2 and inp_user == 2 :
+    result = "win"
+else:
+    result = "lost"
+
+print(f"The coin is {coin}\nYOU {result.upper()} !!!")
