@@ -1,0 +1,15 @@
+import random
+
+#get the user choice
+inp_user = int(input("Guess the Roll Dice !\nEnter a number between 1 and 6\n"))
+
+#check from the choice
+num_win = random.randint(1, 6)
+dice = num_win
+if num_win == inp_user :
+    result = "win"
+else:
+    result = "lost"
+
+#print the result
+print(f"The Dice is {dice}\nYOU {result.upper()} !!!")
