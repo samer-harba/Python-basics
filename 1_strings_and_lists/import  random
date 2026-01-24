@@ -1,0 +1,17 @@
+import  random
+#get the winning numbers
+num_1 = random.randint(1, 20)
+num_2 = random.randint(1, 20)
+num_3 = random.randint(1, 20)
+num_4 = random.randint(1, 20)
+
+#get the number from the user
+inp_user = int(input("Enter a number between 1 and 20 : "))
+print("-"*30)
+
+#Check if the entered number is winning
+
+if inp_user == num_1 or inp_user == num_2 or inp_user == num_3 or inp_user == num_4 :
+    print("You win !!")
+else:
+    print("You lost !!")
