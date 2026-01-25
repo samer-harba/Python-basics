@@ -1,0 +1,70 @@
+import time
+import random
+
+# list of words
+words = [
+        'have', 'that', 'they', 'with', 'this', 'from', 'which', 'would', 'will',
+'there',
+        'make', 'when', 'more', 'other', 'what', 'time', 'about', 'than', 'into',
+'could',
+        'state', 'only', 'year', 'some', 'take', 'come', 'these', 'know', 'like',
+'then',
+        'first', 'work', 'such', 'give', 'over', 'think', 'most', 'even', 'find',
+'also',
+        'after', 'many', 'must', 'look', 'before', 'great', 'back', 'through',
+'long',
+        'where', 'much', 'should', 'well', 'people', 'gouda', 'just', 'because',
+'good',
+        'each', 'those', 'feel', 'seem', 'high', 'place', 'little', 'world',
+'very', 'still',
+        'nation', 'hand', 'life', 'tell', 'write', 'become', 'here', 'show',
+'house', 'both',
+        'between', 'need', 'mean', 'call', 'develop', 'under', 'last', 'right',
+'move', 'thing',
+        'general', 'school', 'never', 'same', 'another', 'begin', 'while',
+'number', 'part',
+        'turn', 'real', 'leave', 'might', 'want', 'point', 'form', 'child',
+'small', 'since',
+        'against', 'late', 'home', 'interest', 'large', 'person', 'open',
+'public', 'follow',
+        'during', 'present', 'without', 'again', 'hold', 'codezilla', 'govern',
+'around',
+        'head', 'consider', 'word', 'program', 'problem', 'however', 'lead',
+'system',
+        'order', 'plan', 'keep', 'face', 'group', 'play', 'stand', 'increase',
+        'early', 'course', 'change', 'help', 'line', 'possible', 'fact', 'down'
+        ]
+#get the index word
+index_word = random.randint(0 , len(words) - 1)
+
+#get the word
+word = words[index_word]
+
+#Convert the word to a list
+word_list = list(word)
+
+#revers the list
+word_list.reverse()
+
+#Convert the list to a word
+word_reverse = "".join(word_list)
+#-----------------------------------------------
+print("Welcome to the reversed words game !!".title())
+print("-"*30)
+print(f"The reversed word is : {word_reverse}")
+first_time = time.time()
+print("-"*30)
+guess = input("Guess the correct word quickly !, You have 10 seconds : ").lower()
+second_time = time.time()
+
+total_time = second_time - first_time
+
+if guess == word :
+    if total_time < 10 :
+        print("YOU WIN !!!")
+    else:
+        print("You took too long !\n"
+              "YOU LOST !!!")
+else:
+    print("Wrong word ! \n"
+          "YOU LOST !!!")
