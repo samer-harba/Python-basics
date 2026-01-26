@@ -1,0 +1,15 @@
+#create variables for the minimum number and the empty list
+numbers = []
+num = 452
+#use a while loop to iterate through the range of numbers
+while num < 983:
+    if num % 5 == 0 and num % 7 == 0:
+        numbers.append(num)
+    num += 1
+
+numbers.sort()
+#calculate the average of the second highest and second lowest numbers
+average = (numbers[-2] + numbers[1]) / 2
+
+# Print the result
+print(f"The average of the second highest ({numbers[-2]}) and second lowest ({numbers[1]}) numbers is: {average} ")
