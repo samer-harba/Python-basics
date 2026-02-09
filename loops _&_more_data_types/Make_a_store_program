@@ -1,0 +1,25 @@
+total = []
+while True:
+    product = input("Enter the product name : ")
+    if product == "done" or product == "" :
+        break
+    quantity = float(input("Enter the quantity name : "))
+    price = float(input("Enter the price : "))
+    print("-"*10)
+    print(f"product : {product}\n"
+          f"quantity : {quantity}\n"
+          f"price {price}")
+    print("-" * 10)
+    total_product = quantity * price
+    print(f"total item cost : {total_product}")
+    print("-"*30)
+    total.append(total_product)
+total.sort(reverse = True)
+num_price = 1
+index = 0
+while num_price <= len(total):
+    print(f"price {num_price}: {total[index]}")
+    num_price += 1
+    index += 1
+print("-"*40)
+print(f"Total cost : {sum(total)}")
