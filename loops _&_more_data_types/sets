@@ -1,0 +1,8 @@
+import random
+numbers = []
+for number in range(1000):
+    numbers.append(random.randint(1,1000))
+unique_numbers = set(numbers)
+unique_list = list (unique_numbers)
+average = sum(unique_list) / len(unique_list)
+print(f"{average:.2f}")
