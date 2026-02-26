@@ -1,0 +1,59 @@
+# A list of available fruits
+from operator import index
+
+available_fruits = [
+    # Format: [item name, price for kg] 
+    ["Apple", 30], 
+    ["Banana", 20], 
+    ["Orange", 25], 
+    ["Mango", 40], 
+    ["Strawberry", 35], 
+    ["Blueberry", 50], 
+    ["Peach", 45], 
+    ["Pineapple", 55], 
+    ["Watermelon", 30], 
+    ["Grapes", 50], 
+    ["Cherry", 60], 
+    ["Kiwi", 45] 
+]
+basket_fruit = []
+print("Welcome to codezilla fruits store !")
+message = ("1.View available fruits and buy\n"
+           "2.Total prais of basket\n"
+           "3.Quit\n")
+choice = True
+while choice == True:
+    print(message)
+    choice = int(input("Enter the number of choice : "))
+    if choice == 1:
+        print("Available Fruits :")
+        print("-"*10)
+        index = 1
+        for fruit , price  in available_fruits:
+            print(f"{index}. {fruit}: {price}EGP")
+            index +=1
+        print("-"*20)
+        item = int(input("Enter the number of the item(0 to return to previous menu) : "))
+        if item != 0 :
+            print(f"{available_fruits[item-1][0]} added to basket successfully")
+            basket_fruit.append(available_fruits[item - 1])
+            choice = True
+        else:
+            choice = True
+    elif choice == 2 :
+        total = [num for name , num in basket_fruit]
+        print(f"The total price of basket is {sum(total)}")
+        choice = True
+    elif choice == 3 and len(basket_fruit) < 1:
+        print("Your basket is empty.\n"
+              "Thank you for choosing codezilla fruits store!\n"
+              "See you again soon !")
+    elif choice == 3 :
+        print(f"Final basket :")
+        for names , numb in basket_fruit:
+            print(f"{names} : {numb} EGP")
+        print("-" * 10)
+        total = [num for name , num in basket_fruit]
+        print(f"The total price of basket : {sum(total)} EGP")
+        print("Thank you for choosing codezilla fruits store!\n"
+              "See you again soon !")
