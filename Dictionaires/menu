@@ -1,0 +1,41 @@
+menu = {"Margherita Pizza": 100, "Pepperoni Pizza": 120,
+"Meat Lovers Pizza": 150, "Chicken Pizza": 130,
+"Beef Burger": 100, "Chicken Burger": 80}
+
+while True:
+    print("1.Add new item.\n"
+          "2.Remove item.\n"
+          "3.Update item \n"
+          "4.Exit")
+    inp = input("Enter your choice : ")
+    if inp == "1" :
+        price = int(input("Enter item price : "))
+        name_item = input("Enter the name of the item to add to the menu (press Enter to exit): ").title()
+        if name_item != "" :
+            menu[name_item] = price
+            print(f"The ({name_item}) added successfully to menu.")
+    elif inp == "2":
+        item_del = input("Enter the name of item to deleted (Press enter to exit): ").title()
+        if item_del != "":
+            if item_del in menu :
+                answer = input(f"Are you sure you want to deleted {item_del}?(y/n) : ").lower()
+                if answer == "y":
+                    menu.pop(item_del)
+                    print(f"{item_del} has been deleted .")
+            else:
+                print(f"{item_del} not found in menu .")
+    elif inp == "3" :
+        item_update = input("Enter the name of item to update (press enter to exit) : ").title()
+        if item_update != "" :
+            if item_update in menu:
+                price = int(input("Enter the new price : "))
+                menu[item_update] = price
+                print(f"{item_update} has been updated .")
+            else:
+                print(f"{item_update} not found in menu .")
+    elif inp == "4":
+        break
+print("The new menu is : ")
+for item , price in menu.items() :
+    print(f"{item} : {price}")
+    
