@@ -1,0 +1,77 @@
+inventory = {"Paracetamol": {"price":25, "quantity":10}, 
+            "Aspirin": {"price":15, "quantity":20}, 
+            "Ibuprofen": {"price":20, "quantity":15}, 
+            "Cough Syrup": {"price":30, "quantity":5}, 
+            "Augmentin": {"price":100, "quantity":7}, 
+            "Amoxicillin": {"price":80, "quantity":8}, 
+            "Panadol": {"price":25, "quantity":10}, 
+            "Zinc": {"price":15, "quantity":20}, 
+            "Vitamin C": {"price":20, "quantity":15}, 
+            "Fucidin": {"price":30, "quantity":5}, 
+            "Kolanog": {"price":100, "quantity":2}, 
+            }
+
+while True:
+    print("1.Add new items.\n"
+          "2.Remove items\n"
+          "3.Update items.\n"
+          "4.check available quantity.\n"
+          "5.print treatment information.\n"
+          "6.Exit")
+    inp = input("Enter your choice : ")
+    while inp == '1' :
+        print("----Entering new item----")
+        name_item = input("Enter the name of item (Enter to exit) :").title()
+        if name_item == "":
+            break
+        price_item = float(input("Enter item price : "))
+        quantity_item = int(input("Enter item quantity"))
+        inventory[name_item] = {"price" : price_item , "quantity" : quantity_item}
+    while inp == '2' :
+        print("----Delete item----")
+        name_to_delete = input("Enter name to delete (Enter to exit) : ")
+        if name_to_delete == "":
+            break
+        if name_to_delete in inventory:
+            answer = input(f"Are you sure you want to delete {name_to_delete} (y/n)?").lower()
+            if answer == "y":
+                inventory.pop(name_to_delete)
+                print(f"{name_to_delete} has been deleted.")
+        else:
+            print("not found")
+    while inp == '3':
+        print("----Entering new Update----")
+        item_to_update = input("Enter item name to updated (Enter to exit) :").title()
+        if item_to_update == "":
+            break
+        if item_to_update in inventory:
+            price_item = float(input("Enter new item price : "))
+            quantity_item = int(input("Enter new item quantity"))
+            inventory[item_to_update] = {"price" : price_item , "quantity" : quantity_item}
+            print(f"{item_to_update} has been deleted.")
+        else:
+            print("not found")
+    while inp == '4':
+        print("----Check item quantity----")
+        item_to_check = input("Enter item name to check it (Enter to exit) : ")
+        if item_to_check == "":
+            break
+        if item_to_check in inventory:
+            quantity = inventory[item_to_check]["quantity"]
+            print(f"We have {quantity} {item_to_check} units.")
+        else:
+            print("not found")
+    while inp == '5':
+        print("---printing treatment information----")
+        item_to_print = input("Enter item name (Enter to exit) : ")
+        if item_to_print == "":
+            break
+        if item_to_print in inventory:
+            print(f"Item : {item_to_print}\n"
+                  f"Price : {inventory[item_to_print]["price"]}\n"
+                  f"Quantity : {inventory[item_to_print]["quantity"]}")
+        else:
+            print("not found")
+    if inp == "":
+        break
+print("Have a nice day !!")
