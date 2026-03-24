@@ -1,1 +1,27 @@
+inventory = {"Paracetamol": {"price":25, "quantity":10}, 
+"Aspirin": {"price":15, "quantity":20}, 
+"Ibuprofen": {"price":20, "quantity":15}, 
+"Cough Syrup": {"price":30, "quantity":5}, 
+"Augmentin": {"price":100, "quantity":7}, 
+"Amoxicillin": {"price":80, "quantity":8}, 
+"Panadol": {"price":25, "quantity":10}, 
+"Zinc": {"price":15, "quantity":20}, 
+"Vitamin C": {"price":20, "quantity":15}, 
+"Fucidin": {"price":30, "quantity":5}, 
+"Kolanog": {"price":100, "quantity":2}, 
+}
 
+while True :
+    user_inp = input("Enter the treatment names seperated by comma (Press enter to exit) : ").title().strip()
+    if user_inp == "" :
+        break
+    list_user = user_inp.split(", ")
+    print(list_user)
+    for index in range(0, len(list_user)) :
+        product = list_user[index]
+        price = inventory.get(product, {}).get("price", "Not available")
+        quantity = inventory.get(product, {}).get("quantity", "Not available")
+        print(f"item : {product}\n"
+              f"price : {price}.sy\n"
+              f"quantity : {quantity}")
+        print("-"*20)
