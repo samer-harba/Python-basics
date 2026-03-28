@@ -1,0 +1,56 @@
+february_shopping_list = { 
+    1: ['meat', 'chicken', 'chicken',  
+                      'chicken', 'bread', 'chocolate', 'meat'],  
+    2: ['bread', 'milks', 'butter', 'butter', 'chocolate'],  
+    3: ['butter', 'meat', 'milks'],  
+    4: ['butter', 'bread', 'nuts'],  
+    5: ['butter', 'bread', 'chocolate', 'chocolate'],  
+    6: ['nuts', 'butter', 'butter',  
+                  'butter', 'chocolate', 'butter'],  
+    7: ['cheese', 'milks', 'butter', 'nuts'],  
+    8: ['cheese', 'meat', 'nuts', 'yoghurt', 'cheese'],  
+    9: ['chocolate', 'milks', 'milks',  
+                    'chocolate', 'milks', 'eggs', 'meat'],  
+    10: ['yoghurt', 'butter', 'chocolate', 'cheese', 'butter'],  
+    11: ['cheese', 'meat', 'yoghurt'],  
+    12: ['eggs', 'chocolate', 'meat', 'eggs', 'butter'],  
+    13: ['bread', 'eggs', 'yoghurt',  
+                      'yoghurt', 'chicken', 'chocolate'],  
+    14: ['milks', 'meat', 'meat'],  
+    15: ['meat', 'chicken', 'butter', 'nuts', 'nuts'],  
+    16: ['meat', 'meat', 'chicken'] 
+    }
+items_prices = {
+'meat': 250,
+'chicken': 140,
+'bread': 10,
+'chocolate': 20,
+'milks': 42,
+'butter': 75,
+'nuts': 90,
+'cheese': 65,
+'yoghurt': 25,
+'eggs': 120
+}
+all_shobing = {}
+for items in february_shopping_list.values():
+    for object in items :
+        if object in all_shobing :
+            all_shobing [object] += 1
+        else:
+            all_shobing[object] = 1
+item_price = {}
+for item , price in items_prices.items():
+    item_price[item] = (price * all_shobing[item])
+
+for item , count in all_shobing.items() :
+    print(f"{item.title()} : {count}")
+
+print("-"*20)
+
+for item , cost in item_price.items() :
+    print(f"{item.title()} : {cost}")
+
+total_cost = sum(item_price.values())
+print("-"*20)
+print(f"Total items cost is : {total_cost}")
