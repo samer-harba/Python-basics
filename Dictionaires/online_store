@@ -1,0 +1,88 @@
+available_items = {
+    "iphone 17" : {
+        "price" : 700,
+        "quantity" : 2
+    },
+    "iphone 17 pro" : {
+        "price": 1000,
+        "quantity": 2
+    },
+    "iphone 17 pro max" : {
+        "price": 1200,
+        "quantity": 1
+    }
+    }
+menu_message = '''
+what would you like to do?
+ 
+1. view available items
+2. view cart
+3. view total price of cart
+4. quit
+'''.title()
+cart = {}
+total_price = []
+while True :
+    print(menu_message)
+    user_choice = input("Pleas, Enter your choice : ")
+    if user_choice == "1" :
+        print("The availably items are : ")
+        for i , item in enumerate(available_items):
+            item_quantity = available_items[item]["quantity"]
+            item_price = available_items[item]["price"]
+            if item_quantity != 0 :
+                print(f"{i+1}. {item} : ${item_price}.")
+                print("-"*10)
+            else:
+                print(f"{i+1}. {item} : ${item_price} ((( out of stock ))).")
+        item_num = input("Enter the number of your choice(press Enter to back) : ")
+        if item_num == "":
+            continue
+        order_name = list(available_items.keys())[int(item_num) - 1]
+        order_price = available_items[order_name]["price"]
+        order_quantity = cart.get(order_name, {}).get("quantity" , 0) + 1
+        order_info = {order_name: {"price": order_price,
+                                   "quantity": order_quantity}}
+        if available_items[order_name]["quantity"] != 0 :
+            cart.update(order_info)
+            print(f"The {order_name} added successfully to the cart !")
+            available_items[order_name]["quantity"] -= 1
+        else:
+            print("sorry, this item out of the stock.")
+    elif user_choice == "2" :
+        if cart:
+            print("cart :")
+            for item in cart:
+                item_price = cart[item]["price"]
+                item_quantity = cart[item]["quantity"]
+                print(f"{item} : ${item_price} x {item_quantity}")
+                print("-" * 20)
+            list_total_price = [cart[item]["price"] * cart[item]["quantity"] for item in cart]
+            print(f"The total price is ${sum(list_total_price)}")
+
+        else:
+            print("No items have been bought . ")
+    elif user_choice == "3":
+        list_total_price = [cart[item]["price"] * cart[item]["quantity"] for item in cart]
+        print(f"The total price is {sum(list_total_price)}")
+    elif user_choice == "4" :
+        print("Thanks for shopping at Samer store .")
+        break
+    else:
+        print("Pleas, Enter a number between 1 and 4 .")
+if cart :
+    print("cart :")
+    for item in cart:
+        item_price = cart[item]["price"]
+        item_quantity = cart[item]["quantity"]
+        print(f"{item} : ${item_price} x {item_quantity}")
+        print("-" * 20)
+else:
+    print("No items have been bought . ")
+
+list_total_price = [cart[item]["price"] * cart[item]["quantity"] for item in cart]
+print(f"The total price is ${sum(list_total_price)}")
+print("Quiting the program...")
+
+
+
