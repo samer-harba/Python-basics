@@ -1,0 +1,76 @@
+menu = {'pizzas' : {"Margherita": 100, "Pepperoni": 120,
+          "Meat Lovers": 150, "Chicken": 130},
+'burgers' : {"Beef": 100, "Chicken": 80, "Bacon": 120},
+'drinks' : {"Coke": 30, "Sprite": 25, "Fanta": 25, "Pepsi": 30},
+'soups' : {"Chicken Soup": 50, "Beef Soup": 60,
+         "Mushroom Soup": 40},
+'desserts' : {"Ice Cream": 50, "Chocolate Cake": 60,
+            "Cheese Cake": 70}
+    }
+print("Welcome to the samer restaurant")
+order = {}
+while True :
+    for i, item in enumerate(menu):
+        print(f"{i+1}. {item}")
+    item_num = input("Pleas, Enter the number of the item you want (Enter to exit) : ")
+    if item_num == "":
+        break
+    elif item_num not in ["1", "2", "3", "4", "5"]:
+        print("Invalid option")
+        continue
+    order_menu_name = list(menu.keys())[int(item_num) - 1]
+    for i , item in enumerate(menu[order_menu_name]):
+        item_price = menu[order_menu_name][item]
+        print(f"{i + 1}. {item} : {item_price} SYR")
+    num_order = int(input("Pleas, Enter the number of the item you want (0 to return to the previous menu) : "))
+    if num_order == 0:
+        continue
+    order_name = list(menu[order_menu_name].keys())[int(num_order) - 1]
+    order_quantity = int(input("Pleas, Enter the quantity : "))
+    order_price = menu[order_menu_name][order_name]
+    order_info = {order_name + " " + order_menu_name : {"quantity" :order_quantity , "price" : order_price}}
+    order.update(order_info)
+    message_to_user = ("1. Add another item.\n"
+                       "2. View the order\n"
+                       "3. Clear the order\n"
+                       "4. Exit")
+    print(message_to_user)
+    user_choice = int(input("Pleas, Enter your choice : "))
+    if user_choice == 1:
+        continue
+    elif user_choice == 2 :
+        print("-"*40)
+        print("Your order is :")
+        print("-" * 40)
+        for item in order :
+            order_price = order[item]["price"]
+            order_quantity = order[item]["quantity"]
+            print(f"Item : {item}\n"
+                  f"Price : {order_price}\n"
+                  f"Quantity : {order_quantity}")
+            print("-" * 20)
+            total_item_price = order_price * order_quantity
+            print(f"Item total is : {total_item_price}")
+            print("-" * 40)
+        total_order = [order[item]["price"] * order[item]["quantity"] for item in order]
+        print(f"Toral : {sum(total_order)} SYR")
+    elif user_choice == 3 :
+        order = {}
+        print("Order cleared")
+    elif user_choice == 4 :
+        break
+print("-"*40)
+print("Your order is :")
+print("-" * 40)
+for item in order:
+    order_price = order[item]["price"]
+    order_quantity = order[item]["quantity"]
+    print(f"Item : {item}\n"
+          f"Price : {order_price}\n"
+          f"Quantity : {order_quantity}")
+    print("-" * 20)
+    total_item_price = order_price * order_quantity
+    print(f"Item total is : {total_item_price}")
+total_order = [order[item]["price"] * order[item]["quantity"] for item in order]
+print(f"Toral : {sum(total_order)
+} SYR")
